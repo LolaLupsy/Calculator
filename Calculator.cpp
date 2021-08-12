@@ -1,17 +1,16 @@
 #include"evaluate.hpp"
+#include<cmath>
 using namespace std;
 int main()
 {
-    string Expression = "";
-    string PostExpression = "";
-    int t=0, k = 0;
-;
-   getline(cin, Expression);
-    Calculator equ(Expression);
-    PostExpression = equ.GetExpression();
-    cout << PostExpression << endl;
-    double result = equ.Evaluate(PostExpression);
+  string Expression = "2+54";
+  string PostExpression = "";
 
-    cout << result << endl;
-
+  // getline(cin, Expression);
+   Calculator equ(Expression);
+   Expression = equ.First();
+   PostExpression = equ.GetExpression(Expression);
+   double result = equ.Evaluate(PostExpression);
+   cout << PostExpression << endl;
+   cout << result << endl;
 }
