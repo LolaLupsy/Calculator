@@ -3,10 +3,10 @@
 using namespace std;
 int main()
 {
-  string Expression = "2+54";
+  string Expression = "2+sin(43+7)+2^(4)";
   string PostExpression = "";
 
-  // getline(cin, Expression);
+// getline(cin, Expression);
    Calculator equ(Expression);
    Expression = equ.First();
    PostExpression = equ.GetExpression(Expression);

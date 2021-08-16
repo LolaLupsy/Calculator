@@ -13,7 +13,7 @@ private:
 public:
 
     Calculator(string Expression);
-    int lenght(int t);
+    int len(string t);
     bool Priority(char a, char b);
     double Evaluate(string str);
     string GetExpression(string exp);

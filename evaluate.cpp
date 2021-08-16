@@ -2,12 +2,9 @@
 
 Calculator::Calculator(string Expression) :terms(Expression) {};
 
-int Calculator::lenght(int t) {
+int Calculator::len(string t) {
     int count = 0;
-    while (t != 0) {
-        t /= 10;
-        count++;
-    }
+    for (count = 0;count < t.length();) { count += 1; }
     return count;
 }
 
@@ -129,10 +126,11 @@ string Calculator::First() {
               ss << inter;
               ss >> inter1;
               newExp += inter1;
-              ss.str("");
+              ss.clear();
               inter1="";
+              medium = "";
     
-        } /*
+        } 
 else  if (terms[i] == '^') {
             newExp += terms[i];    
             if (terms[++i] == '(') {
@@ -143,9 +141,10 @@ else  if (terms[i] == '^') {
             ss << inter;
             ss >> inter1;
             newExp += inter1;
-            ss.str("");
+            ss.clear();
             inter1 = "";
-        }*/
+            medium = "";
+        }
         else {
             newExp += terms[i];
         }
@@ -201,8 +200,8 @@ string Calculator::GetExpression(string exp) {//функция преобразует в постфиксно
 }
 
 double Calculator::Evaluate(string str) { // считается постфиксное выражение
-    double a = 0.0, b = 0.0, t= 0.0;
-    string len;
+    double a = 0.0, b = 0.0, t= 0.0,k=0.0;
+    string l;
     stringstream ss;
     stringstream tt;
     ss << str;
@@ -210,8 +209,11 @@ double Calculator::Evaluate(string str) { // считается постфиксное выражение
     for (size_t i = 0;str[i]!='\0';i++) {
         if (isdigit(str[i])) {
             ss >> t;
-            i = i + lenght(t);
+            tt << t;
+            tt >> l;
+            i = i + len(l);
             stack.push(t);
+            tt.clear();
         }
         if (str[i] == ' ') {
             ;
@@ -249,7 +251,7 @@ double Calculator::Evaluate(string str) { // считается постфиксное выражение
             stack.pop();
             b = stack.top();
             stack.pop();
-            stack.push(pow(a, b));
+            stack.push(pow(b,a));
         }
     }
     return stack.top();//получаю результат
